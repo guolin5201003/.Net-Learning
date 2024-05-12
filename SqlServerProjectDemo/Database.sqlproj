@@ -58,6 +58,8 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Table" />
+    <Folder Include="PostDeployment" />
+    <Folder Include="PublishSetttings" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Table\T_Custom.sql" />
@@ -68,5 +70,15 @@
   <ItemGroup>
     <Build Include="Table\T_Order.sql" />
     <Build Include="Table\T_Product.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="PostDeployment\Script.PostDeployment1.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PostDeployment\InitialCustomer.sql" />
+    <None Include="PostDeployment\InitialOrder.sql" />
+    <None Include="PostDeployment\InitialProduct.sql" />
+    <None Include="PublishSetttings\RecreateDB.publish.xml" />
+    <None Include="PublishSetttings\WithTableDrop.publish.xml" />
   </ItemGroup>
 </Project>
