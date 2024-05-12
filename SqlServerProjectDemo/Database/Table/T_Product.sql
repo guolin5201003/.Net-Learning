@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[T_Product]
+(
+	[Id] BIGINT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] NVARCHAR(100) NOT NULL, 
+    [Price] NUMERIC(18, 4) NOT NULL, 
+    [Description] NVARCHAR(500) NULL
+)

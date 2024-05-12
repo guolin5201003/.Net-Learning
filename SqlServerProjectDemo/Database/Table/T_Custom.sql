@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[T_Custom]
+(
+	[Id] BIGINT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] NVARCHAR(500) NOT NULL, 
+    [Gender] BIT NOT NULL, 
+    [Birthday] DATETIME NULL
+)

@@ -1,4 +1,4 @@
-﻿namespace AttributeDemo
+﻿namespace SqlServerProjectDemo
 {
     internal class Program
     {
