@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34601.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepoisitoryUnitOfWorkDemo", "RepoisitoryUnitOfWorkDemo.csproj", "{97450699-42CA-43A1-9DC6-E6C45C2EEFE4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repoisitory.Presentation", "Repoisitory.Presentation.csproj", "{97450699-42CA-43A1-9DC6-E6C45C2EEFE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Domain", "..\Repository.Domain\Repository.Domain.csproj", "{A721084B-8ECE-4C97-A3CE-095371094627}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Domain", "..\Repository.Domain\Repository.Domain.csproj", "{A721084B-8ECE-4C97-A3CE-095371094627}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Infrastucture", "..\Repository.Infrastucture\Repository.Infrastucture.csproj", "{15326935-7A1E-49EC-B236-0DA7C8DE87ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Infrastucture", "..\Repository.Infrastucture\Repository.Infrastucture.csproj", "{15326935-7A1E-49EC-B236-0DA7C8DE87ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.Application", "..\Repository.Application\Repository.Application.csproj", "{991B98B4-1769-44B8-98A0-B68BED0AEB76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.Application", "..\Repository.Application\Repository.Application.csproj", "{991B98B4-1769-44B8-98A0-B68BED0AEB76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.IoC", "..\Repository.IoC\Repository.IoC.csproj", "{55BD5B06-9B9B-4F8C-AC16-8C8789290B5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.IoC", "..\Repository.IoC\Repository.IoC.csproj", "{55BD5B06-9B9B-4F8C-AC16-8C8789290B5F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
