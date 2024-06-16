@@ -31,7 +31,7 @@ public partial class EFCoreDBContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ORM_DEMO;User Id=sa;Password=MD123!@#;TrustServerCertificate=true");
+        optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ORM_DEMO;User Id=sa;Password=md1599;TrustServerCertificate=true");
         //"Server=(localdb)\\MSSQLLocalDB;Database=ORM_DEMO;User Id=sa;Password=MD123!@#;"
         optionsBuilder.LogTo(msg =>
         {

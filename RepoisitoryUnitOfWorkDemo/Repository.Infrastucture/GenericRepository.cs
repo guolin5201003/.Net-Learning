@@ -16,21 +16,26 @@ public class GenericRepository<T> : IRepository<T> where T : class
         this.dbContext = dbContext;
         this.dbSet = dbContext.Set<T>();
     }
-    public T Add(T entity)
+
+    public void Add(T entity)
+    {
+        dbSet.Add(entity);
+    }
+
+    public T AddToDB(T entity)
     {
         dbSet.Add(entity);
         dbContext.SaveChanges();
         return entity;
     }
 
-    public int Delete(T entity)
+    public void Delete(T entity)
     {
         if (dbContext.Entry(entity).State == EntityState.Detached)
         {
             dbSet.Attach(entity);
         }
         dbSet.Remove(entity);
-        return dbContext.SaveChanges();
     }
 
     public T Get(long id)
@@ -43,9 +48,24 @@ public class GenericRepository<T> : IRepository<T> where T : class
         return dbSet.ToList();
     }
 
-    public int Update(T entity)
+    public void Update(T entity)
     {
         dbContext.Entry(entity).State = EntityState.Modified;
+    }
+
+    public int UpdateToDB(T entity)
+    {
+        dbContext.Entry(entity).State = EntityState.Modified;
+        return dbContext.SaveChanges() ;
+    }
+    public int DeleteToDB(T entity)
+    {
+        if (dbContext.Entry(entity).State == EntityState.Detached)
+        {
+            dbSet.Attach(entity);
+        }
+        dbSet.Remove(entity);
         return dbContext.SaveChanges();
     }
+
 }

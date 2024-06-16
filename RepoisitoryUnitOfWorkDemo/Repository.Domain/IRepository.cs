@@ -8,9 +8,9 @@ namespace Repository.Infrastucture
 {
     public interface IRepository<T> where T : class
     {
-        T Add(T entity);
-        int Delete(T entity);
-        int Update(T entity);
+        void Add(T entity);
+        void Delete(T entity);
+        void Update(T entity);
         T Get(long id);
         IEnumerable<T> GetAll();
 
