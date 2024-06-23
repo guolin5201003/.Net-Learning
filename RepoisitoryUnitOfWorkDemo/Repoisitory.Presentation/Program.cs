@@ -12,9 +12,37 @@ namespace RepoisitoryUnitOfWorkDemo
 
             //TestUnitOfWork();
 
+            //stService();
+
             var dbContext = new EFCoreDBContext();
             var unitOfWork = new UnitOfWork(dbContext);
-            var OrderSvc = new OrderService(unitOfWork);
+            var OrderSvc = new OrderService(unitOfWork, new GenericRepository<Customer>(dbContext));
+
+            var products = new List<ProductDTO>();
+
+            var product1 = new ProductDTO
+            {
+                Id = 1,
+                Price = 999.9900m
+            };
+            var product2 = new ProductDTO
+            {
+                Id = 2,
+                Price = 1499.9900m
+            };
+            products.Add(product1);
+            products.Add(product2);
+
+            OrderSvc.AddOrderWithOrderItems(1, products);
+
+            get方法 要用DTO
+        }
+
+        private static void TestService()
+        {
+            var dbContext = new EFCoreDBContext();
+            var unitOfWork = new UnitOfWork(dbContext);
+            var OrderSvc = new OrderService(unitOfWork, new GenericRepository<Customer>(dbContext));
 
             var customer = new GenericRepository<Customer>(dbContext).Get(4);
             var products = new List<Product>();
@@ -24,7 +52,6 @@ namespace RepoisitoryUnitOfWorkDemo
             products.Add(productRepo.Get(3));
 
             OrderSvc.AddOrderWithOrderItems(customer, products);
-            
         }
 
         private static void TestUnitOfWork()

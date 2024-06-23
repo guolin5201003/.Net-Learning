@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Repository.Domain.Models;
 
-public partial class Customer
+public class Customer
 {
     public long Id { get; set; }
 
-    public string Name { get; set; } = null!;
+    public string? Name { get; set; }
 
     public bool Gender { get; set; }
 
