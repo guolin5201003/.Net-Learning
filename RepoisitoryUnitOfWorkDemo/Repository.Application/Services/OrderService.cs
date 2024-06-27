@@ -8,6 +8,7 @@ namespace Repository.Application
     {
         private readonly UnitOfWork unitOfWork;
         private GenericRepository<Customer> customerRepo;
+        private IMapper mapper;
 
         public OrderService(UnitOfWork unitOfWork, GenericRepository<Customer> customerRepo) 
         {
@@ -18,7 +19,7 @@ namespace Repository.Application
                 cfg.AddProfile<AutoMapperProfile>(); // 添加你的 Profile 类  
             });
 
-            IMapper mapper = config.CreateMapper(); // 创建 IMapper 实例  
+            mapper = config.CreateMapper(); // 创建 IMapper 实例  
         }
 
         public void AddOrderWithOrderItems(Customer customer,List<Product> products)
@@ -120,6 +121,13 @@ namespace Repository.Application
                 unitOfWork.Rollback();
             }
 
+        }
+
+        public OrderDTO GetOrder(long orderId)
+        {
+            var order = unitOfWork.OrderRepo.Get(orderId);
+            var orderDTO = mapper.Map<Order, OrderDTO>(order);
+            return orderDTO;
         }
 
     }

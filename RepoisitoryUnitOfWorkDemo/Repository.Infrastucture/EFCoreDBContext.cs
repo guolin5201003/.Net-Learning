@@ -9,10 +9,11 @@ namespace Repository.Infrastucture;
 
 public partial class EFCoreDBContext : DbContext
 {
-    public string ConnectionString { get; set; }
+    private readonly string connectionString;
 
-    public EFCoreDBContext()
+    public EFCoreDBContext(string connectionString)
     {
+        this.connectionString = connectionString;
     }
 
     public EFCoreDBContext(DbContextOptions<EFCoreDBContext> options)
@@ -31,7 +32,7 @@ public partial class EFCoreDBContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         base.OnConfiguring(optionsBuilder);
-        optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=ORM_DEMO;User Id=sa;Password=md1599;TrustServerCertificate=true");
+        optionsBuilder.UseSqlServer(connectionString);
         //"Server=(localdb)\\MSSQLLocalDB;Database=ORM_DEMO;User Id=sa;Password=MD123!@#;"
         optionsBuilder.LogTo(msg =>
         {
