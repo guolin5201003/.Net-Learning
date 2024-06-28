@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Infrastucture
 {
-    public class UnitOfWork : IUnitofWork, IDisposable
+    public class UnitOfWork : IUnitOfWork, IDisposable
     {
         private readonly EFCoreDBContext dbContext;
         private IDbContextTransaction _transaction;

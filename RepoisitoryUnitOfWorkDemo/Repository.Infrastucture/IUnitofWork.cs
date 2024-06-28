@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Repository.Infrastucture
 {
-    public interface IUnitofWork
+    public interface IUnitOfWork
     {
         void Save();
         void BeginTransaction();

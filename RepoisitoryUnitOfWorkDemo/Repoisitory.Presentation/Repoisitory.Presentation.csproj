@@ -16,6 +16,7 @@
     <ProjectReference Include="..\Repository.Application\Repository.Application.csproj" />
     <ProjectReference Include="..\Repository.Domain\Repository.Domain.csproj" />
     <ProjectReference Include="..\Repository.Infrastucture\Repository.Infrastucture.csproj" />
+    <ProjectReference Include="..\Repository.IoC\Repository.IoC.csproj" />
   </ItemGroup>
 
   <ItemGroup>

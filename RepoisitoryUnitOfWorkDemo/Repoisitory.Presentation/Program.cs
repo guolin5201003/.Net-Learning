@@ -7,6 +7,7 @@ using Repository.Application;
 using Repository.Domain.Models;
 using Repository.Infrastucture;
 using Microsoft.Extensions.Configuration.Json;
+using Repository.IoC;
 
 namespace RepoisitoryUnitOfWorkDemo
 {
@@ -15,41 +16,49 @@ namespace RepoisitoryUnitOfWorkDemo
         public static string ConnectionString { get; set; }
         static void Main(string[] args)
         {
+            IConfiguration configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .Build();
+
+            ConnectionString = configuration.GetConnectionString("MyConnectionString2");
+
             //TestRepository();
 
             //TestUnitOfWork();
 
             //TestService();
 
-            IConfiguration configuration = new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .Build();
 
-            ConnectionString = configuration.GetConnectionString("MyConnectionString2");
+            TestServiceUseDTO();
+        }
 
-            var dbContext = new EFCoreDBContext(ConnectionString);
+        private static void TestServiceUseDTO()
+        {
+            //var dbContext = new EFCoreDBContext(ConnectionString);
 
-                var unitOfWork = new UnitOfWork(dbContext);
-                var OrderSvc = new OrderService(unitOfWork, new GenericRepository<Customer>(dbContext));
+            //var unitOfWork = new UnitOfWork(dbContext);
+            //var OrderSvc = new OrderService(unitOfWork, new GenericRepository<Customer>(dbContext));
 
-                var order = OrderSvc.GetOrder(1);
+            var OrderSvc = DependancyInjection.Resolve<OrderService>();
 
-                var products = new List<ProductDTO>();
+            var order = OrderSvc.GetOrder(1);
 
-                var product1 = new ProductDTO
-                {
-                    Id = 1,
-                    Price = 999.9900m
-                };
-                var product2 = new ProductDTO
-                {
-                    Id = 2,
-                    Price = 1499.9900m
-                };
-                products.Add(product1);
-                products.Add(product2);
+            var products = new List<ProductDTO>();
 
-                OrderSvc.AddOrderWithOrderItems(1, products);
+            var product1 = new ProductDTO
+            {
+                Id = 1,
+                Price = 999.9900m
+            };
+            var product2 = new ProductDTO
+            {
+                Id = 2,
+                Price = 1499.9900m
+            };
+            products.Add(product1);
+            products.Add(product2);
+
+            OrderSvc.AddOrderWithOrderItems(1, products);
         }
 
         private static void TestService()
