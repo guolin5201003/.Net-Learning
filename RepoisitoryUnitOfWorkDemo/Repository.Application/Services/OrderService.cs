@@ -7,10 +7,10 @@ namespace Repository.Application
     public class OrderService
     {
         private readonly UnitOfWork unitOfWork;
-        private GenericRepository<Customer> customerRepo;
+        private IRepository<Customer> customerRepo;
         private IMapper mapper;
 
-        public OrderService(UnitOfWork unitOfWork, GenericRepository<Customer> customerRepo) 
+        public OrderService(UnitOfWork unitOfWork, IRepository<Customer> customerRepo) 
         {
             this.unitOfWork = unitOfWork;
             this.customerRepo = customerRepo;

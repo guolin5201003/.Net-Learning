@@ -63,7 +63,7 @@ namespace RepoisitoryUnitOfWorkDemo
 
         private static void TestService()
         {
-            var dbContext = new EFCoreDBContext(ConnectionString);
+            var dbContext = new EFCoreDBContext();
             var unitOfWork = new UnitOfWork(dbContext);
             var OrderSvc = new OrderService(unitOfWork, new GenericRepository<Customer>(dbContext));
 
@@ -79,7 +79,7 @@ namespace RepoisitoryUnitOfWorkDemo
 
         private static void TestUnitOfWork()
         {
-            var unitOfWork = new UnitOfWork(new EFCoreDBContext(ConnectionString));
+            var unitOfWork = new UnitOfWork(new EFCoreDBContext());
             var orderItems = unitOfWork.OrderItemRepo.GetAll();
 
             var newOrderItem = new OrderItem
@@ -100,7 +100,7 @@ namespace RepoisitoryUnitOfWorkDemo
 
         private static void TestRepository()
         {
-            var repository = new GenericRepository<Order>(new EFCoreDBContext(ConnectionString));
+            var repository = new GenericRepository<Order>(new EFCoreDBContext());
             var order = repository.Get(1);
             var orderList = repository.GetAll();
 
