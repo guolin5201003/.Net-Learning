@@ -20,5 +20,6 @@ namespace Repository.Application
         public string? Phone { get; set; }
 
         public string? Address { get; set; }
+        public virtual ICollection<OrderDTO> Orders { get; set; }
     }
 }

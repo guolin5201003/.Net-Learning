@@ -18,6 +18,7 @@ namespace Repository.Application
 
         public decimal? TotalPrice { get; set; }
         public string TotalPriceStr { get; set; }
+        public List<OrderItemDTO> OrderItems { get; set; } = new List<OrderItemDTO>();
 
     }
 }

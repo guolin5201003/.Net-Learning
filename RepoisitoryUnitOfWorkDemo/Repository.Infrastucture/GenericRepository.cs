@@ -55,8 +55,16 @@ public class GenericRepository<T> : IRepository<T> where T : class
 
     public int UpdateToDB(T entity)
     {
+        dbContext.ChangeTracker.DetectChanges();
+        Console.WriteLine(dbContext.ChangeTracker.DebugView.LongView);
+
+        if (dbContext.Entry(entity).State == EntityState.Detached)
+        {
+            dbSet.Attach(entity);
+        }
         dbContext.Entry(entity).State = EntityState.Modified;
-        return dbContext.SaveChanges() ;
+
+        return dbContext.SaveChanges();
     }
     public int DeleteToDB(T entity)
     {
@@ -68,4 +76,19 @@ public class GenericRepository<T> : IRepository<T> where T : class
         return dbContext.SaveChanges();
     }
 
+    public T Get(long id, params string[] includesProperties)
+    {
+
+        IQueryable<T> query = dbSet;
+        foreach (var include in includesProperties)
+        {
+            query = query.Include(include);
+        }
+        
+        var result = query.SingleOrDefault(e => EF.Property<long>(e, "Id") == id);
+        dbContext.ChangeTracker.DetectChanges();
+        Console.WriteLine(dbContext.ChangeTracker.DebugView.LongView); 
+        return result;
+
+    }
 }

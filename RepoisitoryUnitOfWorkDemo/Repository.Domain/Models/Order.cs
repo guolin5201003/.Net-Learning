@@ -14,4 +14,6 @@ public partial class Order
     public string? Description { get; set; }
 
     public decimal? TotalPrice { get; set; }
+
+    public virtual ICollection<OrderItem> OrderItems { get; set; }
 }

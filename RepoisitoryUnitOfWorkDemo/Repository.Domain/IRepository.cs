@@ -13,6 +13,10 @@ namespace Repository.Infrastucture
         void Update(T entity);
         T Get(long id);
         IEnumerable<T> GetAll();
+        T Get(long id, params string[] includesProperties);
 
+        T AddToDB(T entity);
+        int DeleteToDB(T entity);
+        int UpdateToDB(T entity);
     }
 }

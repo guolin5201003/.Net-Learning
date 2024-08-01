@@ -17,6 +17,7 @@ namespace Repository.IoC
             builder.RegisterType<EFCoreDBContext>().As<EFCoreDBContext>();
             builder.RegisterType<UnitOfWork>().As<UnitOfWork>();
             builder.RegisterType<GenericRepository<Customer>>().As<IRepository<Customer>>();
+            builder.RegisterType<GenericRepository<Order>>().As<IRepository<Order>>();
             builder.RegisterType<OrderService>();
 
             container = builder.Build();

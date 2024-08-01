@@ -23,13 +23,75 @@ namespace RepoisitoryUnitOfWorkDemo
             ConnectionString = configuration.GetConnectionString("MyConnectionString2");
 
             //TestRepository();
-
             //TestUnitOfWork();
-
             //TestService();
+            //TestServiceUseDTO();
 
+            TestDepandencyInjection();
 
-            TestServiceUseDTO();
+        }
+
+        private static void TestDepandencyInjection()
+        {
+            GetCustomerById();
+
+            //var order = AddOrder();
+
+            //DeleteOrder(order);
+
+            UpdateOrder();
+        }
+
+        private static void UpdateOrder()
+        {
+            var OrderSvc = DependancyInjection.Resolve<OrderService>();
+
+            var order1 = OrderSvc.GetOrderWithItems(30002);
+            order1.Description = $"Updated description {DateTime.Now}";
+            order1.OrderItems.ForEach(o => o.Description = $"Updated description {DateTime.Now}");
+            OrderSvc.UpdateOrder(order1);
+        }
+
+        private static int DeleteOrder(OrderDTO order)
+        {
+            var OrderSvc = DependancyInjection.Resolve<OrderService>();
+            return OrderSvc.DeleteOrder(order);
+        }
+
+        private static OrderDTO AddOrder()
+        {
+            var OrderdSvc = DependancyInjection.Resolve<OrderService>();
+            var createDate = DateTime.Now;
+            var order = new OrderDTO
+            {
+                CustomerId = 1,
+                CreateDate = createDate,
+            };
+            //TODO: should add ProductSvc to get the products info.
+            var orderItems = new List<OrderItemDTO>
+            {
+                new OrderItemDTO
+                {
+                    ProductId = 10,
+                    Price = 29.99m,
+                    CreateDate = createDate
+                },
+                new OrderItemDTO
+                {
+                    ProductId = 9,
+                    Price = 79.99m,
+                    CreateDate = createDate
+                }
+            };
+
+            order.OrderItems.AddRange(orderItems);
+            return OrderdSvc.AddOrder(order);
+        }
+
+        private static void GetCustomerById()
+        {
+            var OrderSvc = DependancyInjection.Resolve<OrderService>();
+            var customer = OrderSvc.GetCustomerById(1);
         }
 
         private static void TestServiceUseDTO()
@@ -40,6 +102,7 @@ namespace RepoisitoryUnitOfWorkDemo
             //var OrderSvc = new OrderService(unitOfWork, new GenericRepository<Customer>(dbContext));
 
             var OrderSvc = DependancyInjection.Resolve<OrderService>();
+            
 
             var order = OrderSvc.GetOrder(1);
 
@@ -61,21 +124,21 @@ namespace RepoisitoryUnitOfWorkDemo
             OrderSvc.AddOrderWithOrderItems(1, products);
         }
 
-        private static void TestService()
-        {
-            var dbContext = new EFCoreDBContext();
-            var unitOfWork = new UnitOfWork(dbContext);
-            var OrderSvc = new OrderService(unitOfWork, new GenericRepository<Customer>(dbContext));
+        //private static void TestService()
+        //{
+        //    var dbContext = new EFCoreDBContext();
+        //    var unitOfWork = new UnitOfWork(dbContext);
+        //    var OrderSvc = new OrderService(unitOfWork, new GenericRepository<Customer>(dbContext));
 
-            var customer = new GenericRepository<Customer>(dbContext).Get(4);
-            var products = new List<Product>();
-            var productRepo = new GenericRepository<Product>(dbContext);
-            products.Add(productRepo.Get(1));
-            products.Add(productRepo.Get(2));
-            products.Add(productRepo.Get(3));
+        //    var customer = new GenericRepository<Customer>(dbContext).Get(4);
+        //    var products = new List<Product>();
+        //    var productRepo = new GenericRepository<Product>(dbContext);
+        //    products.Add(productRepo.Get(1));
+        //    products.Add(productRepo.Get(2));
+        //    products.Add(productRepo.Get(3));
 
-            OrderSvc.AddOrderWithOrderItems(customer, products);
-        }
+        //    //OrderSvc.AddOrderWithOrderItems(customer, products);
+        //}
 
         private static void TestUnitOfWork()
         {
