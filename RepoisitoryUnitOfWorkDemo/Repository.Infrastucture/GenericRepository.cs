@@ -55,14 +55,14 @@ public class GenericRepository<T> : IRepository<T> where T : class
 
     public int UpdateToDB(T entity)
     {
-        dbContext.ChangeTracker.DetectChanges();
-        Console.WriteLine(dbContext.ChangeTracker.DebugView.LongView);
+        //dbContext.ChangeTracker.DetectChanges();
+        //Console.WriteLine(dbContext.ChangeTracker.DebugView.LongView);
 
-        if (dbContext.Entry(entity).State == EntityState.Detached)
-        {
-            dbSet.Attach(entity);
-        }
-        dbContext.Entry(entity).State = EntityState.Modified;
+        //if (dbContext.Entry(entity).State == EntityState.Detached)
+        //{
+        //    dbSet.Attach(entity);
+        //}
+        //dbContext.Entry(entity).State = EntityState.Modified;
 
         return dbContext.SaveChanges();
     }
