@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncScenarios", "AsyncScen
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncScenarios2", "AsyncScenarios2\AsyncScenarios2.csproj", "{5869C6C2-757B-40D2-A108-ACB9354C57F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProcessAsyncTasks", "ProcessAsyncTasks\ProcessAsyncTasks.csproj", "{59A594A6-A5C3-460E-96D3-034341E7F235}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessAsyncTasks", "ProcessAsyncTasks\ProcessAsyncTasks.csproj", "{59A594A6-A5C3-460E-96D3-034341E7F235}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncFileAccess", "AsyncFileAccess\AsyncFileAccess.csproj", "{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{59A594A6-A5C3-460E-96D3-034341E7F235}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59A594A6-A5C3-460E-96D3-034341E7F235}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59A594A6-A5C3-460E-96D3-034341E7F235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
