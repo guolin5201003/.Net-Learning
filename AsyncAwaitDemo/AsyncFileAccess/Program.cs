@@ -1,0 +1,99 @@
+﻿using System.Text;
+
+namespace AsyncFileAccess
+{
+    internal class Program
+    {
+        static async Task Main(string[] args)
+        {
+            //await ProcessReadAsync();
+            //await ProcessWriteAsync();
+            await ProcessMultipleWriteAsync();
+        }
+
+        static async Task<string> ReadTextAsync(string filePath)
+        {
+            using var sourceStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read, bufferSize: 4096, useAsync: true);
+
+            var sb = new StringBuilder();
+
+            byte[] buffer = new byte[4096];
+            int numRead;
+            while ((numRead = await sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
+            {
+                string text = Encoding.UTF8.GetString(buffer, 0, numRead);
+                sb.Append(text);
+            }
+            return sb.ToString();
+        }
+
+        static async Task ProcessReadAsync()
+        {
+            string filePath = @"D:\logs\log.txt";
+            if (File.Exists(filePath))
+            {
+                string text = await ReadTextAsync(filePath);
+                Console.WriteLine(text);
+            }
+            else
+            {
+                Console.WriteLine($"File not found: {filePath}");
+            }
+        }
+
+        static async Task WriteTextAsync(string filePath, string text)
+        {
+            byte[] buffer = Encoding.UTF8.GetBytes(text);
+
+            using var sourceStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write, bufferSize: 4096, useAsync: true);
+
+            await sourceStream.WriteAsync(buffer, 0, buffer.Length);
+            await sourceStream.WriteAsync(buffer, 0, buffer.Length);
+        }
+
+        static async Task ProcessWriteAsync()
+        {
+            string filePath = @"temp.txt";
+
+            string text = $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}: Hello, World! {Environment.NewLine}";
+
+            await WriteTextAsync(filePath, text);
+        }
+
+        static async Task ProcessMultipleWriteAsync()
+        {
+            IList<FileStream> fileStreams = new List<FileStream>();
+            try
+            {   
+                string folder = Directory.CreateDirectory("tempfolder").Name;
+
+                IList<Task> tasks = new List<Task>();
+
+                for (int i = 0; i < 10; i++)
+                {
+                    string fileName = $"file-{i:00}.txt";
+                    string filePath = $"{folder}\\{fileName}";
+
+                    string text = $"In file {i}{Environment.NewLine}";
+
+                    byte[] buffer = Encoding.UTF8.GetBytes(text);
+
+                    var sourceStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write, bufferSize: 4096, useAsync: true);
+                    var task = sourceStream.WriteAsync(buffer, 0, buffer.Length);
+
+                    fileStreams.Add(sourceStream);
+                    tasks.Add(task);
+                }
+
+                await Task.WhenAll(tasks);
+            }
+            finally
+            {
+                foreach (var fileStream in fileStreams)
+                {
+                    fileStream.Close();
+                }
+            }
+        }
+    }
+}
