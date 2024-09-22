@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessAsyncTasks", "Proces
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncFileAccess", "AsyncFileAccess\AsyncFileAccess.csproj", "{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncVoidReturn", "AsyncVoidReturn\AsyncVoidReturn.csproj", "{E542A219-1286-4625-9AF1-890D2B8BB676}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncVoidReturnWinform", "AsyncVoidReturnWinform\AsyncVoidReturnWinform.csproj", "{F06CD4D4-5297-48E4-8ACB-B6E5FB10E366}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E542A219-1286-4625-9AF1-890D2B8BB676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E542A219-1286-4625-9AF1-890D2B8BB676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E542A219-1286-4625-9AF1-890D2B8BB676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E542A219-1286-4625-9AF1-890D2B8BB676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F06CD4D4-5297-48E4-8ACB-B6E5FB10E366}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F06CD4D4-5297-48E4-8ACB-B6E5FB10E366}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F06CD4D4-5297-48E4-8ACB-B6E5FB10E366}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F06CD4D4-5297-48E4-8ACB-B6E5FB10E366}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
