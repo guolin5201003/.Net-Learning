@@ -6,9 +6,9 @@ namespace AsyncFileAccess
     {
         static async Task Main(string[] args)
         {
-            await ProcessReadAsync();
-             //await ProcessWriteAsync();
-            //await ProcessMultipleWriteAsync();
+            //await ProcessReadAsync();
+            //await ProcessWriteAsync();
+            await ProcessMultipleWriteAsync();
         }
 
         static async Task<string> ReadTextAsync(string filePath)
@@ -45,7 +45,7 @@ namespace AsyncFileAccess
         static async Task WriteTextAsync(string filePath, string text)
         {
             byte[] buffer = Encoding.UTF8.GetBytes(text);
- 
+
             using var sourceStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write, FileShare.Write, bufferSize: 4096, useAsync: true);
 
             await sourceStream.WriteAsync(buffer, 0, buffer.Length);

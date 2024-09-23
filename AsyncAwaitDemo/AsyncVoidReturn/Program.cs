@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static void Main() => AsyncVoidExample.MultipleEventHandlersAsync();
+        static Task Main() => AsyncVoidExample.MultipleEventHandlersAsync();
 
     }
 

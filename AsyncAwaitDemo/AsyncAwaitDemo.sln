@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34601.278
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwaitDemo", "AsyncAwaitDemo\AsyncAwaitDemo.csproj", "{8505AE8A-6180-411A-8300-3293ABC182DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1-AsyncAwaitDemo", "AsyncAwaitDemo\1-AsyncAwaitDemo.csproj", "{8505AE8A-6180-411A-8300-3293ABC182DD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncScenarios", "AsyncScenarios\AsyncScenarios.csproj", "{1BB0833C-07A9-4AC8-99CA-B743933E09B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2-AsyncScenarios", "AsyncScenarios\2-AsyncScenarios.csproj", "{1BB0833C-07A9-4AC8-99CA-B743933E09B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncScenarios2", "AsyncScenarios2\AsyncScenarios2.csproj", "{5869C6C2-757B-40D2-A108-ACB9354C57F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3-AsyncScenarios2", "AsyncScenarios2\3-AsyncScenarios2.csproj", "{5869C6C2-757B-40D2-A108-ACB9354C57F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProcessAsyncTasks", "ProcessAsyncTasks\ProcessAsyncTasks.csproj", "{59A594A6-A5C3-460E-96D3-034341E7F235}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6-ProcessAsyncTasks", "ProcessAsyncTasks\6-ProcessAsyncTasks.csproj", "{59A594A6-A5C3-460E-96D3-034341E7F235}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncFileAccess", "AsyncFileAccess\AsyncFileAccess.csproj", "{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7-AsyncFileAccess", "AsyncFileAccess\7-AsyncFileAccess.csproj", "{2664A38B-D7EB-4272-BA75-89F7A9E2F09E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncVoidReturn", "AsyncVoidReturn\AsyncVoidReturn.csproj", "{E542A219-1286-4625-9AF1-890D2B8BB676}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4-AsyncVoidReturn", "AsyncVoidReturn\4-AsyncVoidReturn.csproj", "{E542A219-1286-4625-9AF1-890D2B8BB676}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncVoidReturnWinform", "AsyncVoidReturnWinform\AsyncVoidReturnWinform.csproj", "{F06CD4D4-5297-48E4-8ACB-B6E5FB10E366}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5-AsyncVoidReturnWinform", "AsyncVoidReturnWinform\5-AsyncVoidReturnWinform.csproj", "{F06CD4D4-5297-48E4-8ACB-B6E5FB10E366}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

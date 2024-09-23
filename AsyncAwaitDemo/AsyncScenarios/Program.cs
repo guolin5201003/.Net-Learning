@@ -106,9 +106,20 @@ namespace AsyncScenarios
         private static async Task<int> CountDotNet(string url)
         {
             Console.WriteLine($"url: {url}");
-            var html = await s_httpClient.GetStringAsync(url);
-            var count = Regex.Matches(html, "dotnet").Count;
-            Console.WriteLine($"Counted {count} occurrences of '.NET' in {url}");
+            var html = string.Empty;
+            var count = 0;
+            try
+            {
+                html = await s_httpClient.GetStringAsync(url);
+                count = Regex.Matches(html, "dotnet").Count;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{url} -- {ex.ToString()}");
+
+
+            }
             return count;
         }
 
