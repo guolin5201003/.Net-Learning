@@ -44,7 +44,8 @@
 
                 //await SumPageSizesAsync();
 
-                await Task.Run(DoSomething);
+                await Task.Run(() => DoSomething(s_cts.Token));
+
             }
             catch (OperationCanceledException)
             {
@@ -84,14 +85,13 @@
             return content.Length;
         }
 
-        static void DoSomething()
+        static void DoSomething(CancellationToken cancellationToken)
         {
             Console.WriteLine("Start do something\n");
             Thread.Sleep(5000);
-            Console.WriteLine("Finished.");
+            Console.WriteLine("End do something\n");
 
         }
-
 
 
     }
