@@ -9,13 +9,12 @@
             var task = Task.Run(() => DoWork());
             if (!task.Wait(timeout))
             {
-                Console.WriteLine("Task timed out"); 
+                Console.WriteLine("Task timed out");
             }
             else
             {
                 Console.WriteLine("Task completed successfully");
             }
-
         }
 
         static void DoWork()
