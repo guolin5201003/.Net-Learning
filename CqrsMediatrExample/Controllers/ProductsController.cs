@@ -29,9 +29,6 @@ namespace CqrsMediatrExample.Controllers
             cmd.Product = product;
             var result = await mediator.Send(cmd);
 
-            await mediator.Publish(new ProductAddedNotification { Product = product });
-
-            await mediator.Publish(new ProductAddedTransactionNotification { Product = product });
 
             return CreatedAtRoute("GetProductById", new { id = result.Id }, result);
         }
