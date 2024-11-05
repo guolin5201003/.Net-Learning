@@ -15,6 +15,7 @@ namespace CqrsMediatrExample.Handlers
         public async Task<Product> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
             await fakeDataStore.AddProduct(request.Product);
+
             return request.Product;
         }
     }

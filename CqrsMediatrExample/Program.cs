@@ -1,4 +1,6 @@
 
+using Serilog;
+
 namespace CqrsMediatrExample
 {
     public class Program
@@ -14,10 +16,17 @@ namespace CqrsMediatrExample
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // 注册 Serilog
+            builder.Host.UseSerilog((context, services, configuration) => configuration
+                .ReadFrom.Configuration(context.Configuration));
+
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
             builder.Services.AddSingleton<FakeDataStore>();
 
+
             var app = builder.Build();
+
+            app.UseSerilogRequestLogging(); // 启用请求日志记录
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
