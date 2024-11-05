@@ -15,6 +15,7 @@ namespace CqrsMediatrExample
             builder.Services.AddSwaggerGen();
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+            builder.Services.AddSingleton<FakeDataStore>();
 
             var app = builder.Build();
 
