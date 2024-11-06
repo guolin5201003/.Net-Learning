@@ -1,4 +1,6 @@
 
+using CqrsMediatrExample.Behaviors;
+using MediatR;
 using Serilog;
 
 namespace CqrsMediatrExample
@@ -22,6 +24,8 @@ namespace CqrsMediatrExample
 
             builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
             builder.Services.AddSingleton<FakeDataStore>();
+            builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
+
 
 
             var app = builder.Build();

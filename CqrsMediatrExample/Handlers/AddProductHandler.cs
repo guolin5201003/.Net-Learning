@@ -22,7 +22,6 @@ namespace CqrsMediatrExample.Handlers
 
             await mediator.Publish(new ProductAddedTransactionNotification { Product = request.Product });
 
-
             return request.Product;
         }
     }
