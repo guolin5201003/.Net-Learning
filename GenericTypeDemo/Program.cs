@@ -1,4 +1,6 @@
-﻿namespace GenericTypeDemo
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GenericTypeDemo
 {
     internal class Program
     {
@@ -6,10 +8,91 @@
         {
             //NonGenericTest();
 
-            GenericTest();
+            //GenericTest();
 
+            //DocumentManagerTest();
+
+            //OtherTest();
+
+            //var r = new Rectangle();
+            //Display(r);
+
+            //Convariant();
+
+            //Nullable<int> x;           
+            //x = 4;
+
+            //int y;
+            //y = (int)x;
+
+            var accounts = new List<Account>
+            {
+                new Account { Name = "123456", Balance = 1000 },
+                new Account { Name = "654321", Balance = 2000 },
+            };
+
+            var sum = Algorithm.Accumulate<Account>(accounts);
+            var sum1 = Algorithm.Accumulate(accounts);//自动识别 <Account>
+
+            var sum2 = Algorithm.AccumulateLambda<Account, decimal>(accounts, (item, total) => total = item.Balance + total);
+
+            Console.ReadKey();
         }
 
+        private static void Convariant()
+        {
+            IConvariant<Derived> convariant = new CovariantDemo();
+            var demo = convariant.GetValue();
+
+            IContravariant<Derived> contravariant = new ContravariantDemo();
+            contravariant.SetValue(new Derived());
+
+            IIndex<Rectangle> rectangles = RectangleCollection.GetRectangles();
+            IIndex<Shape> shapes = rectangles;// Covariant
+            for (int i = 0; i < shapes.Count; i++)
+            {
+                Console.WriteLine(shapes[i].ToString());
+            }
+
+            IDisplay<Shape> display = new ShapeDisplay();
+            IDisplay<Rectangle> displayRectangle = display;
+            displayRectangle.Display(rectangles[0]);
+        }
+
+        //private static void Display(Shape shape)
+        //{
+        //    Console.WriteLine(shape.Name);
+        //}
+
+        private static void OtherTest()
+        {
+            StaticDemo<int>.x = 10;
+            StaticDemo<string>.x = 20;
+            Console.WriteLine(StaticDemo<int>.x);
+            Console.WriteLine(StaticDemo<string>.x);
+            Console.WriteLine(StaticDemo<long>.x);
+        }
+
+        private static void DocumentManagerTest()
+        {
+            DocumentManager<Document> manager = new DocumentManager<Document>();
+            manager.AddDocument(new Document("doc1", "content1"));
+            manager.AddDocument(new Document("doc2", "content2"));
+            manager.AddDocument(new Document("doc3", "content3"));
+
+            manager.DisplayAllDocuments();
+
+            if (manager.IsDocumentAvailable)
+            {
+                Document d = manager.GetDocument();
+                Console.WriteLine(d.Content);
+            }
+        }
+
+        public static void GenericTest<T>(T item)
+        {
+            Console.WriteLine(item);
+        }
         private static void GenericTest()
         {
             var list = new LinkedNodeList<int>();
