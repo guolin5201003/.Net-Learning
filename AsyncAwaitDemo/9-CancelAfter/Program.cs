@@ -44,7 +44,7 @@
 
                 //await SumPageSizesAsync();
 
-                await Task.Run(DoSomething);
+                await Task.Run(() => DoSomething());
             }
             catch (OperationCanceledException)
             {
